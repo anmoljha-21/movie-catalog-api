@@ -15,7 +15,7 @@ public class MovieService {
 	Movie movie;
 	
 	List<Movie> movies = new ArrayList<>();
-	private int counter;
+	private int counter = 1;
 	
 	public Movie addMovie(Movie movie) {
 		movie.setId(counter++);
