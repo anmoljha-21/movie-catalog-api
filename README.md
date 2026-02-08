@@ -1,108 +1,68 @@
-Movie Catalog API (Spring Boot)
+# Movie Catalog API
 
-A simple Java Spring Boot backend application that implements a RESTful API for managing a collection of movies.
-This project demonstrates:
-REST API development
-In-memory storage using ArrayList
-Input validation
-Proper exception handling (404)
+This is a simple Spring Boot REST API built for managing a collection of movies.  
+It uses in-memory storage (`ArrayList`) and supports adding a movie and fetching a movie by ID.
 
-✅ Features
-Add a new movie
-Get a movie by ID
-Input validation using Jakarta Validation
-Proper HTTP status codes (201, 200, 400, 404)
-In-memory data store (ArrayList)
+---
 
-🛠 Tech Stack
+## How to Run
 
-Java 21
-Spring Boot 3+
-Maven
-Spring Web
-Validation (Jakarta)
-Lombok
+Make sure Java 21 and Maven are installed.
 
-▶ How to Run Locally
-1) Clone the repository
-git clone https://github.com/anmoljha-21/movie-catalog-api.git
-cd movie-catalog-api
+Run the application:
 
-2) Run the application
+```bash
 mvn spring-boot:run
+The server will start on:
 
-3) Application runs on:
 http://localhost:8080
-
-📌 API Endpoints
-✅ 1) Add Movie
-
+API Endpoints
+1) Add a Movie
 POST
-/api/movies
 
-Request Body (JSON)
+/api/movies
+Example JSON request body:
+
 {
   "name": "Inception",
   "description": "A mind-bending sci-fi movie",
   "genre": "Sci-Fi",
   "rating": 9.0
 }
+Response:
 
-Response
 201 Created
 
-{
-  "id": 1,
-  "name": "Inception",
-  "description": "A mind-bending sci-fi movie",
-  "genre": "Sci-Fi",
-  "rating": 9.0
-}
+Returns the created movie with an auto-generated id
 
-✅ 2) Get Movie by ID
-
+2) Get Movie by ID
 GET
 
 /api/movies/{id}
 Example:
 
 /api/movies/1
-Response
-200 OK
-
-{
-  "id": 1,
-  "name": "Inception",
-  "description": "A mind-bending sci-fi movie",
-  "genre": "Sci-Fi",
-  "rating": 9.0
-}
-
-❌ Movie Not Found (404)
-
-If a movie ID does not exist:
-Example:
-GET /api/movies/999
-
 Response:
-404 Not Found
-Movie not found with id: 999
 
-✅ Input Validation Rules
+200 OK if the movie exists
 
-name → required (not blank)
-description → required, 5 to 500 characters
-genre → required (not blank)
-rating → must be between 0 and 10
+404 Not Found if the movie does not exist
 
-Invalid requests return:
-400 Bad Request
+Validation Rules
+name must not be blank
 
-🌍 Deployment
+description must not be blank (min 5, max 500 characters)
 
-This project is deployed on:Render
-Once deployed, the API can be tested using Postman/curl.
+genre must not be blank
 
-👤 Author
+rating must be between 0 and 10
+
+Invalid input returns 400 Bad Request.
+
+Notes
+Movies are stored in memory, so data resets when the application restarts.
+
+IDs are generated automatically using an internal counter.
+
+Author
 Anmol Jha
-Freelance Java Developer
