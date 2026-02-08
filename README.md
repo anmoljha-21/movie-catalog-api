@@ -64,5 +64,7 @@ Movies are stored in memory, so data resets when the application restarts.
 
 IDs are generated automatically using an internal counter.
 
+**Deployed URL:** `https://movie-catalog-api-v3yt.onrender.com/`
+
 Author
 Anmol Jha
